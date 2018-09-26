@@ -1,0 +1,42 @@
+{
+  "name": "magicCard",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-plugin-root-import": "^6.1.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.2",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
+    "react-native-cached-image": "^1.4.3",
+    "react-native-fbsdk": "^0.7.0",
+    "react-native-navigation": "^1.1.478",
+    "react-native-vector-icons": "^5.0.0",
+    "react-native-video": "^3.2.0",
+    "react-redux": "^5.0.7",
+    "recompose": "^0.28.0",
+    "redux": "^4.0.0",
+    "redux-api-middleware-native": "^2.0.7",
+    "redux-offline": "^2.0.0",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
+    "remote-redux-devtools": "^0.5.13",
+    "styled-components": "^3.2.3",
+    "tcomb-form-native": "^0.6.16",
+    "tcomb-json-schema": "^0.3.2"
+  },
+  "devDependencies": {
+    "babel-jest": "23.4.2",
+    "babel-preset-react-native": "^5",
+    "jest": "23.4.2",
+    "react-test-renderer": "16.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
