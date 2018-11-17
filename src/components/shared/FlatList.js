@@ -16,8 +16,7 @@ import {
   branch,
   renderComponent,
   withHandlers,
-  withProps,
-  onlyUpdateForKeys
+  withProps
 } from 'recompose';
 
 // Locals
@@ -53,7 +52,6 @@ export const FlatList = styled(
       ({loading}) => loading,
       renderComponent(({loading}) => <View loading={loading} />)
     ),
-    onlyUpdateForKeys(['data']),
     withHandlers({
       renderFooter: ({endRendering}) => () => {
         if (endRendering) return null;

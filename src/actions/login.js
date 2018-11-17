@@ -6,7 +6,7 @@ import {apiUrl, apikey} from '~/config';
 export const register = user => {
     return {
         [CALL_API]: {
-            endpoint: `${apiUrl}/user/v1/register`,
+            endpoint: `${apiUrl}/opsico-api-user/v1/register`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -15,39 +15,26 @@ export const register = user => {
             types: ['SUCCESS_USER', 'USER_FAILURE', 'USER_ERROR']
         }
     };
-    // return async dispatch => {
-    //     function onSuccess(success) {
-    //         dispatch({
-    //             type: 'SUCCESS_USER',
-    //             payload: success
-    //         });
-    //         return success;
-    //     }
-    //     function onError(error) {
-    //         dispatch({
-    //             type: 'POST_USER_ERROR',
-    //             error
-    //         });
-    //         return error;
-    //     }
-    //     try {
-    //         const url = `${apiUrl}/user/v1/register`;
-    //         const axios = fetchClient();
-
-    //         const response = await axios.post(url, user);
-    //         console.log(response);
-    //         return onSuccess(response.data.data);
-    //     } catch (e) {
-    //         console.log(e);
-    //         return onError(e.response.data);
-    //     }
-    // };
 };
+
+export const registerDoctors = user => {
+    return {
+        [CALL_API]: {
+            endpoint: `${apiUrl}/opsico-api-user/v1/registerdoctor`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: user,
+            types: ['SUCCESS_USER', 'USER_FAILURE', 'USER_ERROR']
+        }
+    }
+}
 
 export const loginFacebook = token => {
     return {
         [CALL_API]: {
-            endpoint: `${apiUrl}/user/v1/loginfacebook`,
+            endpoint: `${apiUrl}/opsico-api-user/v1/loginfacebook`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,54 +45,6 @@ export const loginFacebook = token => {
     };
 };
 
-// export const loginFacebook = token => {
-//     console.log(token);
-//     return {
-//         [CALL_API]: {
-//             endpoint: `${apiUrl}/user/v1/loginfacebook`,
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'access_token': token
-//             },
-//             types: ['SUCCESS_USER', 'USER_FAILURE', 'USER_ERROR']
-//         }
-//     };
-
-// return async dispatch => {
-//     function onSuccess(success) {
-//         dispatch({
-//             type: 'SUCCESS_USER',
-//             payload: success
-//         });
-//         return success;
-//     }
-//     function onError(error) {
-//         dispatch({
-//             type: 'ERROR_CARD',
-//             error
-//         });
-//         return error;
-//     }
-//     try {
-//         const url = `${apiUrl}/user/v1/loginfacebook`;
-//         const axios = fetchClient();
-//         console.log(axios);
-//         const options = {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 access_token: token,
-//                 apikey
-//             }
-//         };
-//         const response = await axios.post(url, {}, options);
-//         return onSuccess(response.data.data);
-//     } catch (e) {
-//         console.log(e);
-//         return onError(e);
-//     }
-// };
-// };
 
 export const logout = () => {
     //
@@ -122,6 +61,17 @@ export const logout = () => {
 };
 
 export const login = user => {
+    return {
+        [CALL_API]: {
+            endpoint: `${apiUrl}/opsico-api-user/v1/login`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: user,
+            types: ['SUCCESS_USER', 'LOGIN_FAILURE', 'LOGIN_ERROR']
+        }
+    };
     // return async dispatch => {
     //     function onSuccess(success) {
     //         dispatch({

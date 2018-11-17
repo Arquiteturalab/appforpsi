@@ -32,12 +32,10 @@ export const user = (state = INITIAL_STATE, action) => {
     case 'SUCCESS_ERROR':
       return error(action);
     case 'LOGOUT_USER':
-      console.log(INITIAL_STATE);
       return {...INITIAL_STATE};
     case 'LOGOUT_FAILURE':
-      console.log(action);
     case 'LOGOUT_ERROR':
-      console.log(action);
+      return error(action);
     default:
       return state;
   }

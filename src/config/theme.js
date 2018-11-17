@@ -27,3 +27,7 @@ export const navigatorStyle = {
     statusBarColor: theme.bgSecondary,
     navBarHidden: true
 };
+
+export const image = {
+    profile: require('../images/profile.png')
+};

@@ -19,7 +19,6 @@ const templates = {
   datepicker: () => {},
   list: () => {}
 };
-console.log(stylesheet);
 
 t.form.Form.stylesheet = stylesheet;
 t.form.Form.templates = templates;

@@ -7,18 +7,24 @@ import {navigatorStyle} from '~/config';
 export const enhancer = compose(
   getNavigatorContext,
   withHandlers({
-    handlerOpenRegister: ({navigator}) => () => {
+    handlerOpenRegister: ({navigator}) => e => {
       navigator.push({
         screen: 'Register',
         navigatorStyle,
-        animationType: 'pop'
+        animationType: 'pop',
+        passProps: {
+          type: e
+        }
       });
     },
-    handlerOpenLogin: ({navigator}) => () => {
+    handlerOpenLogin: ({navigator}) => e => {
       navigator.push({
         screen: 'Login',
         navigatorStyle,
-        animationType: 'pop'
+        animationType: 'pop',
+        passProps: {
+          type: e
+        }
       });
     }
   })

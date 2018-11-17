@@ -7,22 +7,22 @@ export const Information = ({handlerOpenRegister, handlerOpenLogin}) => (
   <Wrapper>
     <WrapperBody>
       <WrapperButton>
-        <ButtonSylte borde onPress={handlerOpenLogin}>
+        <ButtonSylte borde onPress={() => handlerOpenLogin('client')}>
           <Text inverted>Login</Text>
         </ButtonSylte>
-        <ButtonSylte success onPress={handlerOpenRegister}>
+        <ButtonSylte success onPress={() => handlerOpenRegister('client')}>
           <Text inverted>Cadastra-se</Text>
         </ButtonSylte>
       </WrapperButton>
     </WrapperBody>
     <FooterBarStyles>
       <WrapperFooter>
-        <Button>
+        <Button onPress={() => handlerOpenLogin('doctor')}>
           <Text weight="700" inverted size={12}>
             Logar como Psicologia?
           </Text>
         </Button>
-        <Button>
+        <Button onPress={() => handlerOpenRegister('doctor')}>
           <Text weight="700" inverted size={12}>
             Junte-se a nós
           </Text>

@@ -6,7 +6,6 @@ import {CachedImage, ImageCacheProvider} from 'react-native-cached-image';
 import {Text, Icon, Image} from '~/components/shared';
 
 export const Card = ({card}) => {
-  console.log(card.imageUrl);
   return (
     <WrapperInfo>
       <WrapperCotent>

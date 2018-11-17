@@ -45,7 +45,7 @@ const Wrapper = styled.View`
   border-left-width: 0;
   border-right-width: 0;
   border-bottom-color: ${props => props.theme.bgSecondary};
-  min-height: 53;
+  min-height: 43;
 `;
 
 const Title = Text.extend`

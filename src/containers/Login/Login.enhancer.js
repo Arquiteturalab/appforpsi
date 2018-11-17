@@ -12,7 +12,7 @@ import {loginFacebook, login} from '~/actions';
 import {FormData} from './FormData';
 import {withRefs, withNotifications, getNavigatorContext} from '~/enhancers';
 import {navigatorStyle} from '~/config';
-console.log(FormData);
+
 export const enhancer = compose(
   withRefs,
   withNotifications,
@@ -26,9 +26,7 @@ export const enhancer = compose(
     handlerLoginFacebook: ({loginFacebook, navigator}) => () => {
       LoginManager.logInWithReadPermissions(['public_profile', 'email']).then(
         function(result) {
-          console.log(result);
           if (result.isCancelled) {
-            console.log('Login cancelled');
           } else {
             AccessToken.getCurrentAccessToken().then(async (data, e) => {
               await loginFacebook(data.accessToken);

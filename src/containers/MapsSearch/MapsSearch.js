@@ -1,8 +1,10 @@
 import React from 'react';
-import {Image} from 'react-native';
-import {CachedImage, ImageCacheProvider} from 'react-native-cached-image';
 import {LoginManager} from 'react-native-fbsdk';
-// import styled from 'styled-components/native';
+import styled from 'styled-components/native';
+import {object, func} from 'prop-types';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import {map} from 'lodash';
+
 // Local
 import {
   Text,
@@ -11,14 +13,41 @@ import {
   Icon,
   SearchButton,
   FlatList,
-  Button
+  Button,
+  CarouselCustom
 } from '~/components/shared';
-import {Card, MenuButton} from '~/components';
+import {Card, MenuButton, ItemCarousel} from '~/components';
 
-export const MapsSearch = ({card, loginFacebook}) => {
+export const MapsSearch = ({
+  doctors,
+  renderItem,
+  registerRef,
+  setRegionMaps,
+  location
+}) => {
   return (
     <WrapperCards>
-      <TopBar
+      <MapStyle
+        innerRef={maps => registerRef('maps', maps)}
+        provider={PROVIDER_GOOGLE}
+        followUserLocation={true}
+        showsMyLocationButton={true}
+        showsUserLocation={true}
+        region={location}
+      >
+        {map(doctors.allIds, item => (
+          <Marker
+            key={item}
+            coordinate={doctors.byId[item].location.coordinates}
+          />
+        ))}
+      </MapStyle>
+      <CarouselCustom
+        data={doctors.allIds}
+        renderItem={renderItem}
+        onSnapToItem={setRegionMaps}
+      />
+      <TopBarTransparent
         leftComponent={<SearchButton modal screen="Filter" />}
         rightComponent={<MenuButton />}
       />
@@ -26,18 +55,23 @@ export const MapsSearch = ({card, loginFacebook}) => {
   );
 };
 
+MapsSearch.propTypes = {
+  doctors: object,
+  location: object,
+  renderItem: func,
+  setRegionMaps: func,
+  registerRef: func
+};
+
 const WrapperCards = Wrapper.extend``;
+const TopBarTransparent = styled(TopBar)`
+  background-color: transparent;
+`;
 
-const listStyle = {paddingTop: 0, paddingBottom: 0};
-
-// http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=439390&type=card
-
-// <FlatList
-//         contentContainerStyle={listStyle}
-//         keyExtractor={item => item}
-//         initialNumToRender={2}
-//         data={card.allIds}
-//         renderItem={({item}) => {
-//           return <Card card={card.byId[item]} />;
-//         }}
-//       />
+const MapStyle = styled(MapView)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+`;

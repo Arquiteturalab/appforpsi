@@ -9,7 +9,7 @@ export const enhancer = compose(
   getNavigatorContext,
   withHandlers({
     onPress: ({navigator, user}) => () => {
-      console.log(user);
+      console.log('user', user);
       const screen = user.logged ? 'Menu' : 'Information';
       navigator.showModal({
         screen: screen,

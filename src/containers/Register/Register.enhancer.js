@@ -1,19 +1,24 @@
-import {compose, withState, withHandlers} from 'recompose';
+import {compose, withState, withHandlers, setPropTypes} from 'recompose';
 import {cloneDeep} from 'lodash';
 import {connect} from 'react-redux';
+import {string} from 'prop-types';
+
 // Locals
 import {FormData} from './FormData';
 import {withRefs, getNavigatorContext} from '~/enhancers';
-import {register} from '~/actions';
+import {register, registerDoctors} from '~/actions';
 import {navigatorStyle} from '~/config';
 
 export const enhancer = compose(
   connect(
     null,
-    {register}
+    {register, registerDoctors}
   ),
   getNavigatorContext,
   withRefs,
+  setPropTypes({
+    type: string.isRequired
+  }),
   withState('forms', 'setForms', FormData),
   withState('isLoading', 'setLoading', false),
   withHandlers({
@@ -23,11 +28,12 @@ export const enhancer = compose(
       setForms,
       register,
       navigator,
-      setLoading
+      setLoading,
+      registerDoctors,
+      type
     }) => async () => {
       const refs = getRefs();
       const customersValue = refs.customersForm.getValue();
-      console.log(customersValue);
       let newForms = cloneDeep(forms);
       if (customersValue) {
         setLoading(true);
@@ -35,7 +41,11 @@ export const enhancer = compose(
           customersValue.password === customersValue.repeatPassword &&
           customersValue.password.length > 3
         ) {
-          await register(customersValue);
+          if (type === 'client') {
+            await register(customersValue);
+          }else {
+            await registerDoctors(customersValue);
+          }
           navigator.resetTo({
             screen: 'MapsSearch',
             navigatorStyle

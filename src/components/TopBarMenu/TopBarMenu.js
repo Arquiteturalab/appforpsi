@@ -13,7 +13,6 @@ import {
 import {object} from 'prop-types';
 
 export const TopBarMenu = ({user}) => {
-  console.log(user);
   return (
     <MainWrapper>
       <StatusBarBackground />

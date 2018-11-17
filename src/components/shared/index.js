@@ -14,3 +14,7 @@ export * from './Textbox';
 export * from './Form';
 export * from './NotificationModal';
 export * from './CustomValidation';
+export * from './CarouselCustom';
+export * from './AnimatedText';
+export * from './TopBarDoctor';
+export * from './Separator';

@@ -10,7 +10,6 @@ import {onAppResume, fetchLogger} from '~/utils';
 export class AppSrc {
     constructor() {
         this.store = configureStore(this.startApp);
-        console.log(this.store);
         // this.store = store;
         registerdScreens(this.store, Provider);
         onAppResume(() => {

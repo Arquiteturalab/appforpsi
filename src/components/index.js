@@ -2,3 +2,8 @@ export * from './Card';
 export * from './MenuButton';
 export * from './TopBarMenu';
 export * from './MenuItem';
+export * from './Maps';
+export * from './ItemCarousel';
+export * from './DoctorDetails';
+export * from './DouctorHour';
+export * from './DoctorHourItem';
