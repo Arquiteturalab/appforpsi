@@ -7,3 +7,8 @@ export * from './ItemCarousel';
 export * from './DoctorDetails';
 export * from './DouctorHour';
 export * from './DoctorHourItem';
+export * from './Calendar';
+export * from './Plan';
+export * from './HistoryItem';
+export * from './StatusSchedule';
+export * from './ModalScheduleCancel';

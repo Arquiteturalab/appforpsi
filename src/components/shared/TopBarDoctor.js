@@ -29,7 +29,6 @@ export const TopBarDoctor = compose(
   })),
   lifecycle({
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps.interpolateColor);
       if (nextProps.visible !== this.props.visible) {
         if (nextProps.visible) {
           Animated.timing(this.props.translateY, {
@@ -57,7 +56,7 @@ export const TopBarDoctor = compose(
   const animated = {
     backgroundColor: interpolate
   };
-  console.log(animated);
+
   return (
     <MainWrapper>
       <StatusBarBackground />

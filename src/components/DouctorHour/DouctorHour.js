@@ -1,22 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
-import {array, func} from 'prop-types';
+import styled, {css} from 'styled-components';
+import {array, func, bool} from 'prop-types';
 
 // Locals
-import {Wrapper, FlatList, Separator, Text} from '~/components/shared';
+import {
+  Wrapper,
+  FlatList,
+  Separator,
+  Text,
+  EmptyText
+} from '~/components/shared';
 import {DoctorHourItem} from '~/components';
-export const DouctorHour = ({source, select}) => {
+export const DouctorHour = ({loading, select, data}) => {
   return (
-    <Wrapper>
+    <WrapperHour loading={loading}>
       <WrapperText>
         <FlatList
           keyExtractor={item => item.hour}
-          data={source}
+          data={data}
           horizontal={true}
+          ListEmptyComponent={
+            <EmptyText>Nenhum horários disponível.</EmptyText>
+          }
           renderItem={item => {
             return (
               <DoctorHourItem
-                key={item.item.hour}
+                key={item.hour}
                 item={item.item}
                 onPressSelect={select}
               />
@@ -24,14 +33,24 @@ export const DouctorHour = ({source, select}) => {
           }}
         />
       </WrapperText>
-    </Wrapper>
+    </WrapperHour>
   );
 };
 
 DouctorHour.propTypes = {
-  source: array,
+  loading: bool,
+  data: array,
   select: func.isRequired
 };
+const WrapperHour = styled(Wrapper)`
+  ${props =>
+    props.loading &&
+    css`
+      padding-top: 10;
+      padding-bottom: 10;
+      height: 80;
+    `};
+`;
 const WrapperText = styled.View`
   background-color: #282948;
   flex: 1;

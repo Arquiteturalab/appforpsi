@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {object} from 'prop-types';
 
 // Locals
 import {
@@ -10,8 +11,7 @@ import {
   Icon,
   Button
 } from '~/components/shared';
-import {object} from 'prop-types';
-
+import {image} from '~/config';
 export const TopBarMenu = ({user}) => {
   return (
     <MainWrapper>
@@ -25,7 +25,10 @@ export const TopBarMenu = ({user}) => {
       <Wrapper>
         <WrapperBody>
           <WrapperAvatar>
-            <Avatar source={{uri: user.data.urlImage}} />
+            {user.data.urlImage && (
+              <Avatar source={{uri: user.data.urlImage}} />
+            )}
+            {!user.data.urlImage && <Avatar source={image.avatar} />}
           </WrapperAvatar>
           <WrapperAvatarText>
             <Text align="center" inverted weight="500">

@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Animated} from 'react-native';
 // import {} from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-import {object, array, func} from 'prop-types';
+import {object, array, func, string, bool} from 'prop-types';
 // Locals
 import {
   Wrapper,
@@ -14,40 +13,52 @@ import {
   Button,
   Text
 } from '~/components/shared';
-import {DoctorDetails, DouctorHour} from '~/components';
+import {DoctorDetails, DouctorHour, Calendar} from '~/components';
 
-export const Doctor = ({doctor, hours, onScroll, searchBarVisible}) => {
+export const Doctor = ({
+  doctor,
+  hour,
+  searchBarVisible,
+  date,
+  setDate,
+  getHour,
+  hourOffer,
+  onChangeHours,
+  onSchedule,
+  isLoading,
+  isLoadingHour
+}) => {
   return (
-    <WrapperDoctor>
+    <WrapperDoctor loading={isLoading}>
       <TopBarDoctor
         visible={searchBarVisible.visible}
-        leftComponent={<BackButtonStyle title="Filtros" />}
+        leftComponent={
+          <BackButtonStyle modal title="Filtros" icon="ios-arrow-down" />
+        }
       />
-      <ScrollWrapper onScroll={onScroll}>
+      <ScrollWrapper>
         <ImageAvatar source={{uri: doctor.user.urlImage}} />
         <Separator />
         <DoctorDetails doctor={doctor} />
         <Separator />
-        <CalendarList
-          // Enable horizontal scrolling, default = false
+        <Calendar
+          onPress={getHour}
+          onChange={e => setDate(e)}
           horizontal={true}
-          // Enable paging on horizontal, default = false
           pagingEnabled={true}
-          theme={{
-            backgroundColor: '#282948',
-            calendarBackground: '#282948',
-            dayTextColor: '#fff',
-            monthTextColor: '#fff',
-            todayTextColor: '#43458a',
-            selectedDayBackgroundColor: '#00adf5'
-          }}
+          value={date}
         />
         <Separator />
-        <DouctorHour data={hours} />
+        <DouctorHour
+          loading={isLoadingHour}
+          onChange={onChangeHours}
+          value={'08:00'}
+          data={hourOffer.hours}
+        />
         <Separator />
       </ScrollWrapper>
       <FooterBar>
-        <Button success>
+        <Button onPress={onSchedule} disabled={!date || !hour} success>
           <Text inverted>Agendamento</Text>
         </Button>
       </FooterBar>
@@ -56,10 +67,17 @@ export const Doctor = ({doctor, hours, onScroll, searchBarVisible}) => {
 };
 
 Doctor.propTypes = {
+  getHour: func.isRequired,
   doctor: object,
-  hours: array,
   onScroll: func,
-  searchBarVisible: object
+  searchBarVisible: object,
+  date: string,
+  hourOffer: object,
+  onChangeHours: func.isRequired,
+  hour: string.isRequired,
+  onSchedule: func.isRequired,
+  isLoading: bool,
+  isLoadingHour: bool
 };
 const WrapperDoctor = Wrapper.extend`
   padding-bottom: 80;

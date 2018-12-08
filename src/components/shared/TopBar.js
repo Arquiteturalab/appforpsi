@@ -23,7 +23,7 @@ export const TopBar = compose(
     <StatusBarBackground />
     <Wrapper>
       {leftComponent === 'hidden' ? <Wrapper /> : leftComponent}
-      <Title inverted>{title}</Title>
+      <Title>{title}</Title>
       {!!notEmpty && rightComponent}
     </Wrapper>
   </MainWrapper>

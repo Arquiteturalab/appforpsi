@@ -18,3 +18,4 @@ export * from './CarouselCustom';
 export * from './AnimatedText';
 export * from './TopBarDoctor';
 export * from './Separator';
+export * from './EmptyText';

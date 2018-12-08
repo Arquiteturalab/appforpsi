@@ -9,7 +9,7 @@ export const DoctorDetails = ({doctor}) => (
   <Details>
     <WrapperHeader>
       <Text align="left" size={20}>
-        {doctor.user.name}
+        {doctor.user ? doctor.user.name : doctor.name}
       </Text>
       <WrapperIcon>
         <Icon size={22} color="#43458a" name="ios-star-half" />

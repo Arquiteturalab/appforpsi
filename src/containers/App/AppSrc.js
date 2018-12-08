@@ -20,7 +20,6 @@ export class AppSrc {
     }
     async handleResume() {
         const {user} = this.store.getState();
-        console.log(user);
     }
 
     startApp() {

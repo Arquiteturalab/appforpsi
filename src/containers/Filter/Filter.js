@@ -6,9 +6,8 @@ import {Wrapper, TopBar, BackButton} from '~/components/shared';
 export const Filter = () => (
   <Wrapper>
     <TopBar
-      leftComponent={
-        <BackButton modal={true} icon="ios-arrow-down" title="Filtros" />
-      }
+      title="Filtros"
+      leftComponent={<BackButton modal={true} icon="ios-arrow-down" />}
     />
   </Wrapper>
 );

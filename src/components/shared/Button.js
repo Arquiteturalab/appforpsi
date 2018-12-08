@@ -32,6 +32,12 @@ export const Button = styled(enhancedButton)`
   padding-left: 10;
   padding-bottom: 10;
   flex-direction: row;
+
+  ${props =>
+    props.disabled &&
+    css`
+      opacity: 0.7;
+    `}
   ${props =>
     props.success &&
     css`

@@ -8,14 +8,26 @@ import thunk from 'redux-thunk';
 
 // locals
 import {apikey} from '~/config';
-import {card, user, doctors, location} from '~/reducers';
+import {
+  card,
+  user,
+  doctors,
+  location,
+  hourOffer,
+  schedule,
+  history,
+  address
+} from '~/reducers';
 import {apiHeadersMiddleware} from '~/middleware';
-
 const appReducer = combineReducers({
   card,
   user,
   doctors,
-  location
+  location,
+  hourOffer,
+  schedule,
+  history,
+  address
 });
 
 export const configureStore = persistCallback => {

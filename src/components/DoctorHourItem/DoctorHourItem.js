@@ -6,7 +6,6 @@ import {func, object} from 'prop-types';
 // Locals
 import {Text} from '~/components/shared';
 export const DoctorHourItem = ({item, onPress}) => {
-  console.log(item);
   return (
     <WrapperHourItem selected={item.selected} onPress={onPress}>
       <Text>{item.hour}</Text>

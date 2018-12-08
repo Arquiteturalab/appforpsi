@@ -52,8 +52,10 @@ export const enhancer = compose(
     }) => async () => {
       const newForm = cloneDeep(form);
       const data = getRefs().formElement.getValue();
+      console.log(data);
       if (data) {
         const {error} = await login(data);
+
         newForm.options.fields['email'].hasError = error;
         newForm.options.fields['password'].hasError = error;
         newForm.value = error ? undefined : data;

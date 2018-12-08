@@ -6,12 +6,12 @@ import {TouchableOpacity, Dimensions} from 'react-native';
 export const enhancer = compose(
   setPropTypes({
     router: string.isRequired,
-    item: object,
+    item: object
   }),
   getNavigatorContext,
   withHandlers({
     onPress: ({navigator, router, item}) => () => {
-      navigator.push({
+      navigator.showModal({
         screen: router,
         animated: true,
         animationType: 'slide-up',

@@ -28,8 +28,8 @@ export const registerDoctors = user => {
             body: user,
             types: ['SUCCESS_USER', 'USER_FAILURE', 'USER_ERROR']
         }
-    }
-}
+    };
+};
 
 export const loginFacebook = token => {
     return {
@@ -44,7 +44,6 @@ export const loginFacebook = token => {
         }
     };
 };
-
 
 export const logout = () => {
     //

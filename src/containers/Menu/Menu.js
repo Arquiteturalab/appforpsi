@@ -21,7 +21,7 @@ export const Menu = ({user, logout}) => (
       <MenuItem icon="ios-key" routeName="ChangePassword">
         Senha
       </MenuItem>
-      <MenuItem onPress={logout} icon="ios-exit">
+      <MenuItem onClickMenu={logout} icon="ios-exit">
         Sair
       </MenuItem>
     </ScrollWrapper>

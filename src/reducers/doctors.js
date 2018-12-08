@@ -2,7 +2,8 @@ import {forEach, cloneDeep} from 'lodash';
 
 const INITIAL_STATE = {
   allIds: [],
-  byId: {}
+  byId: {},
+  selectedDoctor: {}
 };
 
 const getDoctors = (state, {payload}) => {
@@ -18,14 +19,35 @@ const getDoctors = (state, {payload}) => {
       newState.byId[item._id] = item;
     }
   });
-  console.log(newState);
+  return newState;
+};
+const getDoctor = (state, {payload}) => {
+  const newState = {
+    ...state,
+    selectedDoctor: {
+      ...payload.data
+    }
+  };
   return newState;
 };
 
+// const cancel = (state, {payload}) => {
+//   const newState = {
+//     ...state,
+//     selectedDoctor: {
+//       ...payload.data
+//     }
+//   }
+//   console.log(newState);
+// };
 export const doctors = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'DOCTORS_SUCCESS':
       return getDoctors(state, action);
+    case 'DOCTORS_FAILURE':
+      cancel(state, action);
+    case 'DOCTOR_SUCCESS':
+      getDoctor(state, action);
     default:
       return {...state};
   }

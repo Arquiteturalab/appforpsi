@@ -29,5 +29,6 @@ export const navigatorStyle = {
 };
 
 export const image = {
-    profile: require('../images/profile.png')
+    profile: require('../images/profile.png'),
+    avatar: require('../images/avatar3.png')
 };

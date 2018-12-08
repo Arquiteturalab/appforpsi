@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import {string} from 'prop-types';
+import {string, func} from 'prop-types';
 // Locals
 import {Icon, Text, Button} from '~/components/shared';
 
-export const MenuItem = ({icon, children, routeName, modal, onPress}) => (
+export const MenuItem = ({icon, children, routeName, modal, onClickMenu}) => (
   <Wrapper>
-    <ItemButton onPress={onPress}>
+    <ItemButton onPress={onClickMenu}>
       <Left>
         <ItemIcon name={icon} />
         <Text>{children}</Text>
@@ -17,7 +17,8 @@ export const MenuItem = ({icon, children, routeName, modal, onPress}) => (
 );
 
 MenuItem.propTypes = {
-  icon: string
+  icon: string,
+  onClickMenu: func
 };
 
 const Wrapper = styled.View`

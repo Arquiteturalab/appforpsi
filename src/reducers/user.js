@@ -8,6 +8,7 @@ const INITIAL_STATE = {
 };
 
 const login = ({payload}) => {
+  console.log(payload);
   return {
     logged: true,
     data: payload.data,

@@ -7,7 +7,9 @@ import {Information} from '~/containers/Information';
 import {Login} from '~/containers/Login';
 import {Doctor} from '~/containers/Doctor';
 import {Menu} from '~/containers/Menu';
+import {History} from '~/containers/History';
 import {NotificationModal} from '~/components/shared';
+import {HistoryDetails} from '~/containers/HistoryDetails';
 import {withNavigatorContext} from '~/enhancers';
 
 export const registeredScreens = [];
@@ -21,6 +23,8 @@ export const registerdScreens = (store, Provider) => {
   registerComponent('NotificationModal', NotificationModal);
   registerComponent('Menu', Menu);
   registerComponent('Doctor', Doctor);
+  registerComponent('History', History);
+  registerComponent('HistoryDetails', HistoryDetails);
 
   function registerComponent(name, screen) {
     Navigation.registerComponent(

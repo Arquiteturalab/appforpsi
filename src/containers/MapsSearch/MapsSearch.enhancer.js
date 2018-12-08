@@ -33,7 +33,7 @@ export const enhancer = compose(
   }),
   lifecycle({
     async componentWillMount() {
-      // console.log();      
+      console.log('Teste');      
       await this.props.getGeolocation();
       await this.props.getDoctors();
     }
